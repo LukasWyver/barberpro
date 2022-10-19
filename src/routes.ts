@@ -14,9 +14,11 @@ import { DetailHaircutController } from "./controllers/haircut/DetailHaircutCont
 
 import { NewScheduleController } from "./controllers/schedule/NewScheduleController";
 import { ListScheduleController } from "./controllers/schedule/ListScheduleController";
+import { FinishScheduleController } from "./controllers/schedule/FinishScheduleController";
+
+import { SubscribeController } from "./controllers/subscription/SubscribeController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
-import { FinishScheduleController } from "./controllers/schedule/FinishScheduleController";
 
 const router = Router();
 
@@ -54,5 +56,8 @@ router.delete(
   isAuthenticated,
   new FinishScheduleController().handle
 );
+
+// --- Rota Subscribe / Subscriptions ---
+router.post("/subscribe", isAuthenticated, new SubscribeController().handle);
 
 export { router };
